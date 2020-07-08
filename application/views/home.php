@@ -540,7 +540,7 @@
 					</div>
 
 					<div class="all-post text-center">
-						<a class="btn btn-transparent" href="<?=base_url()?>frontend/blog.html">View All Post</a>
+						<a class="btn btn-transparent" href="<?=base_url('artikel/artikel_list')?>">View All Post</a>
 					</div>
 
 				</div> <!-- end row -->

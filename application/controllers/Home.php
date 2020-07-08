@@ -11,7 +11,7 @@ class Home extends CI_Controller {
         
         public function index()
         {
-        $data['row'] = $this->artikel_m->getArtikel();
+        $data['row'] = $this->artikel_m->getLimit();
         $this->load->view('home', $data);
         }
         
