@@ -133,9 +133,9 @@
         <?php } ?>
 
         <?php if($this->fungsi->user_login()->level == 2) { ?>
-        <li><a href="<?=site_url('dashboard')?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?=site_url('ketua')?>"><i class="fa fa-money"></i> <span>Anggota UKM</span></a></li>
-        <li><a href="<?=site_url('ketuartikel')?>"><i class="fa fa-envelope"></i> <span>Artikel</span></a></li>
+          <li><a href="<?=site_url('dashboard')?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?=site_url('artikelkoor')?>"><i class="fa fa-book"></i> <span>Data Artikel</span></a></li>
+        <li><a href="<?=site_url('galerykoor')?>"><i class="fa fa-photo"></i> <span>Data Galery</span></a></li>
         <?php } ?>
 
         <?php if($this->fungsi->user_login()->level == 3) { ?>

@@ -17,7 +17,7 @@
           <div class="box box-warning">
             
             <div class="box-body">
-              <form enctype="multipart/form-data" action="<?=site_url('artikel/process')?>" method="post">
+              <form enctype="multipart/form-data" action="<?=site_url('artikelkoor/process')?>" method="post">
                 <div class="form-group">
                     <input type="hidden" name="divisi_id" value="<?=$this->session->userdata('divisiid')?>">
                     <input type="hidden" name="user_id" value="<?=$this->session->userdata('userid')?>">
@@ -39,7 +39,7 @@
                  <textarea id="editor1" type="text" name="isi_artikel" rows="8" class="form-control" placeholder="isi Artikel Disini" required><?=$row->isi_artikel?></textarea>
                 </div>
                 <div class="pull-left">
-                    <a href="<?=site_url('artikel')?>" class="btn btn-warning btn-flat">
+                    <a href="<?=site_url('artikelkoor')?>" class="btn btn-warning btn-flat">
                         <i class="fa fa-undo"></i> Kembali
                     </a>
                 </div>

@@ -84,6 +84,7 @@ class Artikel extends CI_Controller {
 		$artikel->user_id = null;
 		$artikel->judul_artikel = null;
 		$artikel->keterangan_artikel = null;
+		$artikel->link_video = null;
 		$artikel->penulis_artikel = null;
 		$artikel->isi_artikel = null;
 		$artikel->tanggal_dibuat = date('Y-m-d H:i:s');

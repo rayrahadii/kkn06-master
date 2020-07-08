@@ -17,7 +17,7 @@
           <div class="box box-warning">
             
             <div class="box-body">
-              <form enctype="multipart/form-data" action="<?=site_url('artikel/process')?>" method="post">
+              <form enctype="multipart/form-data" action="<?=site_url('artikelkoor/process')?>" method="post">
                 <div class="form-group">
                   <label>Judul Artikel</label>
                   <input type="text" name="judul_artikel" value="<?=$row->judul_artikel?>" class="form-control" readonly>
@@ -35,7 +35,7 @@
                  <textarea id="editor1" type="text" name="isi_artikel" rows="8" class="form-control" readonly><?=$row->isi_artikel?></textarea>
                 </div>
                 <div class="pull-left">
-                    <a href="<?=site_url('artikel')?>" class="btn btn-warning btn-flat">
+                    <a href="<?=site_url('artikelkoor')?>" class="btn btn-warning btn-flat">
                         <i class="fa fa-undo"></i> Kembali
                     </a>
               </div>

@@ -1,10 +1,10 @@
 <section class="content-header">
-      <h1>Data Artikel
+      <h1>Data Galery
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-        <li class="active">Artikel</li>
+        <li class="active">Galery</li>
       </ol>
     </section>
 
@@ -17,29 +17,21 @@
           <div class="box box-warning">
             
             <div class="box-body">
-              <form enctype="multipart/form-data" action="<?=site_url('artikel/process')?>" method="post">
+              <form enctype="multipart/form-data" action="<?=site_url('galery/process')?>" method="post">
                 <div class="form-group">
                     <input type="hidden" name="divisi_id" value="<?=$this->session->userdata('divisiid')?>">
                     <input type="hidden" name="user_id" value="<?=$this->session->userdata('userid')?>">
-                    <input type="hidden" name="penulis_artikel" value="<?=$this->session->userdata('namauser')?>">
-                    <input type="hidden" name="id" value="<?=$row->artikel_id?>">
-                  <label>Judul Artikel</label>
-                  <input type="text" name="judul_artikel" value="<?=$row->judul_artikel?>" class="form-control" placeholder="Judul Artikel Disini" required>
+                    <input type="hidden" name="penulis_galery" value="<?=$this->session->userdata('namauser')?>">
+                    <input type="hidden" name="id" value="<?=$row->galery_id?>">
+                  <label>Judul Kegiatan</label>
+                  <input type="text" name="judul_galery" value="<?=$row->judul_galery?>" class="form-control" placeholder="Judul Galery Disini" required>
                 </div>
                 <div class="form-group">
-                <label>Keterangan Artikel</label>
-                  <textarea id="editor2" type="text" name="keterangan_artikel" class="form-control" placeholder="Keterangan Artikel Disini" required><?=$row->keterangan_artikel?></textarea>
-                </div>
-                <div class="form-group">
-                <label>Link Youtube / Video</label>
-                  <input type="text" name="link_video" class="form-control"  value="<?=$row->link_video?>" placeholder="Keterangan Artikel Disini">
-                </div>
-                <div class="form-group">
-                  <label>Isi Artikel</label>
-                 <textarea id="editor1" type="text" name="isi_artikel" rows="8" class="form-control" placeholder="isi Artikel Disini" required><?=$row->isi_artikel?></textarea>
+                <label>Keterangan Kegiatan</label>
+                  <textarea id="editor1" type="text" name="keterangan_galery" class="form-control" placeholder="Keterangan Galery Disini" required><?=$row->keterangan_galery?></textarea>
                 </div>
                 <div class="pull-left">
-                    <a href="<?=site_url('artikel')?>" class="btn btn-warning btn-flat">
+                    <a href="<?=site_url('galery')?>" class="btn btn-warning btn-flat">
                         <i class="fa fa-undo"></i> Kembali
                     </a>
                 </div>
@@ -54,7 +46,7 @@
             <?php if($page == 'add') { ?>
                 <div class="form-group">
                   <label>Upload Gambar Disini</label>
-                  <input type="file" name="image_artikel" class="form-control">
+                  <input type="file" name="image_galery" class="form-control">
                 </div>
             <?php } ?>
             </div>

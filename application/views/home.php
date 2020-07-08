@@ -134,8 +134,41 @@
 		</section>
 		<!--/#home section-->
 		
-        <?php $this->load->view('include/navbar');
-		?>
+        <!-- 
+        Fixed Navigation
+        ==================================== -->
+        <header id="navigation" class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?=base_url('home')?>">
+						<h1 id="logo">
+							<img src="<?=base_url()?>frontend/img/logo-meghna.png" alt="Meghna" />
+						</h1>
+					</a>
+                </div>
+
+                <nav class="collapse navbar-collapse navbar-right" >
+                    <ul id="nav" class="nav navbar-nav">
+                    <li class="current"><a href="<?=base_url('home')?>">Home</a></li>
+                        <li><a href="<?=base_url('home')?>#tentang">Tentang</a></li>
+                        <li><a href="<?=base_url('home')?>#showcase">Galery</a></li>
+                        <li><a href="<?=base_url('home')?>#our-team">Divisi</a></li>
+                        <li><a href="<?=base_url('home')?>#blog">Blog</a></li>
+                        <li><a href="<?=base_url('home')?>#contact-us">Contact</a></li>
+                    </ul>
+
+                </nav><!-- /.navbar-collapse -->
+            </div>
+        </header>
+        <!--
+        End Fixed Navigation
+        ==================================== -->
 		
 		<!--
 		Start About Section
@@ -152,6 +185,30 @@
 					<!-- /section title -->
 					
 					<!-- About item -->
+					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
+						<div class="wrap-about">							
+							<div class="icon-box">
+								<i class="fa fa-lightbulb-o fa-4x"></i>
+							</div>					
+							<!-- Express About Yourself -->
+							<div class="about-content text-center">
+								<h3 class="ddd">We're Creative</h3>								
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos</p>
+							</div>
+						</div>
+					</div> 
+					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
+						<div class="wrap-about">							
+							<div class="icon-box">
+								<i class="fa fa-lightbulb-o fa-4x"></i>
+							</div>					
+							<!-- Express About Yourself -->
+							<div class="about-content text-center">
+								<h3 class="ddd">We're Creative</h3>								
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos</p>
+							</div>
+						</div>
+					</div> 
 					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
 						<div class="wrap-about">							
 							<div class="icon-box">
@@ -204,11 +261,13 @@
 						<!-- portfolio item filtering -->
 						<div class="portfolio-filter clearfix">
 							<ul class="text-center">
-							    <li><a href="javascript:void(0)" class="filter" data-filter="all">All</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".app">Mobile App</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".web">Web Design</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".photoshop">Photoshop</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".illustrator">Illustrator</a></li>
+								<li><a href="javascript:void(0)" class="filter" data-filter="all">All</a></li>
+								<?php
+              					$query = $this->db->query('SELECT * FROM divisi');
+              					foreach ($query->result() as $data1) { ?>
+								<li><a href="javascript:void(0)" class="filter" data-filter=".<?=$data1->divisi_id?>"><?=$data1->nama_divisi?></a></li>
+								<?php
+                  				} ?>
 							</ul>
 						</div>
 						<!-- /portfolio item filtering -->
@@ -221,172 +280,23 @@
 			<div class="portfolio-item-wrapper wow fadeInUp" data-wow-duration="500ms">
                 <ul id="og-grid" class="og-grid">
 				
-					<!-- single portfolio item -->	
-					<li class="mix app">
-						<a href="javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
+				<?php
+              $query = $this->db->query('SELECT * FROM galery');
+              foreach ($query->result() as $data1) { ?>	
+				<!-- single portfolio item -->	
+					<li class="mix <?=$data1->divisi_id?>">
+						<a href="<?=base_url('home')?>" data-largesrc="<?=base_url('uploads/galery/'.$data1->image_galery)?>" data-title="<?=$data1->judul_galery?>" data-description="<?=$data1->keterangan_galery?>">
+							<img src="<?=base_url('uploads/galery/'.$data1->image_galery)?>" >
 							<div class="hover-mask">
-								<h3>Azuki bean</h3>
+								<h3><?=$data1->judul_galery?></h3>
 								<span>
 									<i class="fa fa-plus fa-2x"></i>
 								</span>
 							</div>
 						</a>
 					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix web">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Veggies sunt bona vobis</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix photoshop">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Dandelion horseradish</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix illustrator">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Dandelion horseradish</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix app">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Azuki bean</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix app">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Veggies sunt bona vobis</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>	
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix web">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Dandelion horseradish</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>	
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix photoshop">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Azuki bean</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix photoshop">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Veggies sunt bona vobis</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix illustrator">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Veggies sunt bona vobis</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>	
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix web">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Dandelion horseradish</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					
-					<!-- single portfolio item -->
-					<li class="mix app">
-						<a href="<?=base_url()?>frontend/javascript:void(0)" data-largesrc="<?=base_url()?>frontend/img/portfolio/portx1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-							<img src="<?=base_url()?>frontend/img/portfolio/portx1.jpg" alt="Meghna">
-							<div class="hover-mask">
-								<h3>Azuki bean</h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
+					<?php
+                  } ?>
 					<!-- /single portfolio item -->
 					
 				</ul> <!-- end og grid -->

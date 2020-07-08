@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?=base_url()?>frontend/index.html">
+                    <a class="navbar-brand" href="<?=base_url('home')?>">
 						<h1 id="logo">
 							<img src="<?=base_url()?>frontend/img/logo-meghna.png" alt="Meghna" />
 						</h1>

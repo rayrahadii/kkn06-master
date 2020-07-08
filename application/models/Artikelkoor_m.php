@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Artikel_m extends CI_Model {
+class Artikelkoor_m extends CI_Model {
 
     public function get($id = null)
     {
@@ -17,6 +17,7 @@ class Artikel_m extends CI_Model {
         $this->db->select('divisi.divisi_id, nama_divisi, artikel.artikel_id, judul_artikel, penulis_artikel,isi_artikel, keterangan_artikel, image_artikel, tanggal_dibuat ');
         $this->db->from('divisi');
         $this->db->join('artikel', 'artikel.divisi_id = divisi.divisi_id');
+        $this->db->where('artikel.divisi_id', $this->session->userdata('divisiid'));
         $this->db->order_by('artikel_id', 'desc');
         if($id != null) {
             $this->db->where('artikel.artikel_id', $id);
@@ -25,37 +26,6 @@ class Artikel_m extends CI_Model {
         return $query;
     }
 
-
-    public function getLimit($id = null)
-    {
-        $this->db->select('divisi.divisi_id, nama_divisi, artikel.artikel_id, judul_artikel, penulis_artikel,isi_artikel, keterangan_artikel, image_artikel, tanggal_dibuat ');
-        $this->db->from('divisi');
-        $this->db->join('artikel', 'artikel.divisi_id = divisi.divisi_id');
-        $this->db->order_by('artikel_id', 'desc');
-        $this->db->limit(4);
-        if($id != null) {
-            $this->db->where('artikel.artikel_id', $id);
-        }
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function getPagination($limit, $start)
-    {        
-        $this->db->select('divisi.divisi_id, nama_divisi, artikel.artikel_id, judul_artikel, penulis_artikel,isi_artikel, keterangan_artikel, image_artikel, tanggal_dibuat ');
-        $this->db->from('divisi');
-        $this->db->join('artikel', 'artikel.divisi_id = divisi.divisi_id');
-        $this->db->order_by('artikel_id', 'desc');
-        $this->db->limit($limit, $start);
-        $query = $this->db->get();
-        return $query;
-        
-    }
-
-    public function countArtikel()
-    {
-        return $this->db->get('artikel')->num_rows();
-    }
 
     public function add($post)
     {

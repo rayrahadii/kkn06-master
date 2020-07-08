@@ -7,12 +7,14 @@ class Home extends CI_Controller {
 	{
         parent::__construct();
         $this->load->model('artikel_m');;
+        $this->load->model('galery_m');;
 	}
         
         public function index()
         {
+        $data1['row'] = $this->galery_m->getGalery();    
         $data['row'] = $this->artikel_m->getLimit();
-        $this->load->view('home', $data);
+        $this->load->view('home', $data, $data1);
         }
         
 }
